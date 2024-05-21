@@ -27,3 +27,46 @@ foreign key(batch_id) references batch(batch_id),
 foreign key(mentor_id) references mentor(mentor_id),
 foreign key(task_id) references task(task_id)
 );
+
+desc batch;
+desc mentor;
+desc task;
+desc learner;
+
+CREATE table learnerpayment(
+learner_id int,
+paymentmode varchar(25),
+paymentdate date,
+foreign key (learner_id) references learner(learner_id)
+);
+
+alter table learnerpayment add payment_id int primary key;
+
+CREATE table query(
+query_id int primary key,
+query_title varchar(24),
+query_description varchar(45),
+learner_id int,
+foreign key(learner_id) references learner(learner_id)
+);
+CREATE table learnerdetails(
+learner_id int primary key,
+learner_first_name varchar(30),
+learner_last_name varchar(30),
+learner_email_id varchar(30),
+learner_contact_number int,
+learner_address varchar(30),
+learner_state varchar(30),
+learner_city varchar(30),
+learner_github varchar(40),
+learner_linkedin varchar(40),
+foreign key(learner_id) references learner(learner_id)
+);
+CREATE table coursedetails(
+course_id int primary key,
+batch_id int,
+course_name varchar(30),
+course_startdate date,
+course_enddata date,
+foreign key(batch_id) references batch(batch_id)
+);
