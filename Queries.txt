@@ -1,0 +1,29 @@
+CREATE table batch(
+batch_id int primary key,
+batch_name varchar(25),
+batch_type varchar(25)
+);
+CREATE table mentor(
+mentor_id int primary key,
+mentor_name varchar(30),
+mentor_designation varchar(30)
+);
+CREATE table task(
+task_id int primary key,
+task_name varchar(25),
+module_name varchar(25)
+);
+
+CREATE table learner(
+learner_id int primary key,
+learner_first_name varchar(30),
+learner_last_name varchar(30),
+learner_email_id varchar(30),
+learner_contact_number int,
+batch_id int,
+mentor_id int,
+task_id int,
+foreign key(batch_id) references batch(batch_id),
+foreign key(mentor_id) references mentor(mentor_id),
+foreign key(task_id) references task(task_id)
+);
